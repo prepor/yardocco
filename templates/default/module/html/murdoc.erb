@@ -1,0 +1,27 @@
+<style type="text/css" media="screen">
+  <%= @stylesheet %>
+</style>
+<div class="murdoc_wrapper">
+  <div class="murdoc">
+    <% @annotations.each do |a| %>
+    <% need_line, need_method = @definitions.shift %>
+      <% a.paragraphs.each do |p| %>
+        <% unless p.annotation.empty? %>
+          <section><%= htmlify p.annotation %></section>
+        <% end %>
+        <% unless p.source.empty? %>
+          <figure>
+            <ol>
+              <% 1.upto(p.source.split("\n").size) do |i| %>
+                <li<% if i + p.starting_line == need_line %> 
+                  id="<%= anchor_for(need_method) %>"
+                  <% need_line, need_method = @definitions.shift; end %>> <%= i + p.starting_line %> </li>
+              <% end %>
+            </ol>
+            <code><%= p.formatted_source %></code>
+          </figure>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
