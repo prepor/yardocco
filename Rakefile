@@ -15,8 +15,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "yardocco"
   gem.homepage = "http://github.com/prepor/yardocco"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Docco-style YARD template}
+  gem.description = %Q{Docco-style YARD template}
   gem.email = "ceo@prepor.ru"
   gem.authors = ["Andrew Rudenko"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,

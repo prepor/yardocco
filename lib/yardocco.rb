@@ -1,1 +1,1 @@
-YARD::Templates::Engine.register_template_path Pathname.new(File.join(File.dirname(__FILE__), '..')).join('..', 'templates')
+YARD::Templates::Engine.register_template_path Pathname.new(File.dirname(__FILE__)).join('..', 'templates')

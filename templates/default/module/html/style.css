@@ -32,7 +32,8 @@
 .murdoc section {
   float: left;
   clear: both;
-  width: 88%; }
+  width: 88%; 
+  overflow: auto; }
 
 .murdoc p {
   margin-top: 1.5em; }
