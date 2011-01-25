@@ -19,3 +19,11 @@ def murdoc
     
   erb(:murdoc)
 end
+
+def objects_for_line(line)
+  res = []
+  while @definitions.first && @definitions.first[0] == line
+    res << @definitions.shift[1]
+  end
+  res
+end

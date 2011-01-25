@@ -4,7 +4,6 @@
 <div class="murdoc_wrapper">
   <div class="murdoc">
     <% @annotations.each do |a| %>
-    <% need_line, need_method = @definitions.shift %>
       <% a.paragraphs.each do |p| %>
         <% unless p.annotation.empty? %>
           <section><%= htmlify Docstring.new(p.annotation) %></section>
@@ -13,9 +12,12 @@
           <figure>
             <ol>
               <% 1.upto(p.source.split("\n").size) do |i| %>
-                <li<% if i + p.starting_line == need_line %> 
-                  id="<%= anchor_for(need_method) %>"
-                  <% need_line, need_method = @definitions.shift; end %>> <%= i + p.starting_line %> </li>
+                <li> 
+                  <% objects_for_line(i + p.starting_line).each do |o| %>
+                    <a id="<%= anchor_for(o) %>"></a>
+                  <% end %>
+                  <%= i + p.starting_line %> 
+                </li>
               <% end %>
             </ol>
             <code><%= p.formatted_source %></code>
